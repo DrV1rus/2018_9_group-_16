@@ -278,4 +278,4 @@ int is_operator(char symbol)
 	return (symbol == '^' || symbol == '*' || symbol == '/' || symbol == '+' || symbol == '-');
 }
  // nothing
-// yana test 2
+// yana test 3
