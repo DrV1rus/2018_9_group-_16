@@ -277,6 +277,4 @@ int is_operator(char symbol)
 {
 	return (symbol == '^' || symbol == '*' || symbol == '/' || symbol == '+' || symbol == '-');
 }
- // test
-//test2
-// FUCK THIS SHIT
+ // nothing
