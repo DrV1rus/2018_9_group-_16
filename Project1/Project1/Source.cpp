@@ -277,10 +277,5 @@ int is_operator(char symbol)
 {
 	return (symbol == '^' || symbol == '*' || symbol == '/' || symbol == '+' || symbol == '-');
 }
- // nothing
-// yana test 3
-// niko update 1
-// yana update 3
-//niko update 2
-// yana update 4
-// niko update 3
+
+// niko laptop test 1
