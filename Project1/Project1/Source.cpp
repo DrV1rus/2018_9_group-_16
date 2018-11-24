@@ -279,3 +279,4 @@ int is_operator(char symbol)
 }
  // nothing
 // yana test 3
+// niko update 1
