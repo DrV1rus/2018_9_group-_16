@@ -11,7 +11,7 @@
 
 typedef struct
 {
-	char user[MAX_USER_LENGTH];
+	char user[10];
 	int password;
 	int type;
 }username;
@@ -26,32 +26,53 @@ int main()
 
 void login()
 {
-	username u1;
-	u1.type = 1;
+	username u1[3];
 	char inp_user[10];
-	int inp_pass, flag=1;
+	int inp_pass, flag=0, i=0;
 	printf(" Enter your username and password:\n");
-	scanf("%s", &inp_user);
-	scanf("%d", &inp_pass);
+	scanf("%s",&inp_user);
+	scanf("%d",&inp_pass);
 	printf("Input test:\n");
 	printf("Username: %s\n Password: %d\n", inp_user, inp_pass);
-	FILE *fp;
-		fp = fopen("login.txt", "r");
-		if (fp == NULL)
+	FILE* file;
+	file = fopen("login.txt", "r");
+	if (file == NULL) {
+		printf("Cant open the file.\n");
+		exit(1);
+	}
+	while (fscanf(file, "%d%s%d", &(u1[i].type), &(u1[i].user), &(u1[i].password) ) != EOF)
+	{
+		if (strcmp(u1[i].user, inp_user) == 0 && u1[i].password == inp_pass && u1[i].type == 1)
 		{
-			printf("Cant open the file.\n");
-			exit(1);
+			flag = 1;
+			break;
 		}
-		while (fscanf(fp, "%s%d", &(u1.user), &(u1.password)) != EOF)
+		else if (strcmp(u1[i].user, inp_user) == 0 && u1[i].password == inp_pass && u1[i].type == 2)
 		{
-			if (strcmp(u1.user, inp_user) == 0 && inp_pass == u1.password)
-				flag = 1;
-			else
-				flag = 0;
+			flag = 2;
+			break;
 		}
+		else if (strcmp(u1[i].user, inp_user) == 0 && u1[i].password == inp_pass && u1[i].type == 3)
+		{
+			flag = 3;
+			break;
+		}
+		i++;
+	}
 
-		if (flag == 0)
-			printf("Login failed.");
-		else
-			printf("Login successful.");
+	if (flag == 1)
+	{
+		printf(" Login for student was successful.\n");
+	}
+	else if (flag == 2)
+	{
+		printf(" Login for coordinator was successful.\n");
+	}
+	else if (flag == 3)
+	{
+		printf(" Login for data manager was successful.\n");
+	}
+	else
+		printf(" User name was not found or password is incorrect. Login failed.\n");
+	fclose(file);
 }
