@@ -18,10 +18,13 @@ typedef struct
 
 
 void login();
+void backup();
+int check_block(int);
 
 int main()
 {
-	login();
+	//login();
+	backup();
 }
 
 void login()
@@ -75,4 +78,29 @@ void login()
 	else
 		printf(" User name was not found or password is incorrect. Login failed.\n");
 	fclose(file);
+}
+
+void backup()
+{
+	FILE* OP, *BU;
+	char c;
+	OP= fopen("login.txt", "r");
+	BU = fopen("loginbackup.txt", "w");
+	if (OP == NULL || BU == NULL) 
+	{
+		printf("Cant open the file.\n");
+		exit(1);
+	}
+	while ((c = fgetc(OP)) != EOF) 
+		fputc(c, BU);
+	fclose(OP); fclose(BU);
+	printf("Backup was successful!\n");
+}
+
+int check_block(int pay)
+{
+	if (pay == 11500)
+		return 1;
+	else
+		return 0;
 }
