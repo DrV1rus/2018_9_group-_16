@@ -16,11 +16,11 @@ typedef struct {
 	char semester;
 	char marital_status[10];
 	char courses[100];
-	char adress[100];
-	char mail[100];
-	char phone_number[11];
-	int bill;
-	char grades[10];
+	//char adress[100];
+	//char mail[100];
+	//char phone_number[11];
+	//int bill;
+	//char grades[10];
 }Students;
 
 typedef struct {
@@ -119,7 +119,7 @@ void RegisteredCourses() {
 			year_study = student1.year;
 		}*/
 	//}
-	(fscanf(ofp, "%s %s %s %s %s %d %s %s %s %s %s %d %s ", &student1.num_id, &student1.name, &student1.last_name, &student1.date, &student1.name_class, &student1.year, &student1.semester, &student1.marital_status, &student1.courses, &student1.adress, &student1.mail, &student1.phone_number, &student1.bill, &student1.grades) != EOF);
+	(fscanf(ofp, "%s %s %s %s %s %d %s %s  ", &student1.num_id, &student1.name, &student1.last_name, &student1.date, &student1.name_class, &student1.year, &student1.semester, &student1.marital_status, &student1.courses) != EOF);
 	printf("year:%d\n", year_study);
 	printf("class:%s\n", class);
 	fclose(ofp);
@@ -158,7 +158,7 @@ void RegisteredCourses() {
 		exit(1);
 	}
 	int count = 0;
-	fwrite(&student1, sizeof(Students), 1, wop);
+	//fwrite(&student1, sizeof(Students), 1, wop);
 	printf(" Student's ID: %s \n", student1.num_id);
 	printf(" Student's name: %s \n", student1.name);
 	printf(" Student's lastname: %s \n", student1.last_name);
@@ -168,11 +168,11 @@ void RegisteredCourses() {
 	printf(" Student's semester: %c \n", student1.semester);
 	printf(" Student's marital status: %s \n", student1.marital_status);
 	printf(" Student's courses: %s \n", student1.courses);
-	printf(" Student's adress: %s \n", student1.adress);
-	printf(" Student's mail: %s \n", student1.mail);
-	printf(" Student's phone number: %s \n", student1.phone_number);
-	printf(" Student's bill: %d \n", student1.bill);
-	printf(" Student's grades: %s \n", student1.grades);
+	//printf(" Student's adress: %s \n", student1.adress);
+	//printf(" Student's mail: %s \n", student1.mail);
+	//printf(" Student's phone number: %s \n", student1.phone_number);
+	//printf(" Student's bill: %d \n", student1.bill);
+	//printf(" Student's grades: %s \n", student1.grades);
 	fclose(wop);
 	printf("DONE\n");
 
