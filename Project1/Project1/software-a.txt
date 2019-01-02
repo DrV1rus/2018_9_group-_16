@@ -1,0 +1,5 @@
+00001-algebra-software-5-david tal-simon cohen-sunday, 10:00 to 13:00-sunday, 13:00 to 15:00-there are no previous courses-task1-3/3/13,3/3/13-3/3/13-20$
+00002-hedva 1-software-5-karina cohen-nisim tal-monday, 10:00 to 13:00-monday, 13:00 to 15:00-there are no previous courses-task1-11/1/19,11/2/19-11/12/18-20$
+00003-architecture 1-software-4.5-alex jones-gilad han-tuesday, 10:00 to 13:00-tuesday, 13:00 to 15:00-there are no previous courses-task1-14/1/19,14/2/19-14/12/18-20$
+00004-logic 1-software-4-mark levin-mark knopfler-tuesday, 15:00 to 18:00-tuesday, 18:00 to 20:00-there are no previous courses-task1-15/1/19,15/2/19-15/12/18-20$
+00005-computer science introduction-software-4.5-ofir nir-alex panovich-sunday, 15:00 to 18:00-sunday, 18:00 to 20:00-there are no previous courses-task1-16/1/19,16/2/19-16/12/18-20$
