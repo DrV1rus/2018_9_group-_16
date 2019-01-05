@@ -1,0 +1,51 @@
+1 year semester A
+Course:Algebra
+Lecturer:Dr.David Tal
+Age: 45 y.o
+Experience: 15 years.
+
+Course: Calculus 1
+Lecturer: Dr. Karina Cohen-Nisim.
+Age:53 y.o
+Experience: 21 years.
+
+Course: Electronic Materials
+Lecturer: Dr. Alex Jones.
+Age: 37 y.o
+Experience: 4 years.
+
+Course: Computer programming for electronics
+Lecturer: Dr. Mark Levin.
+Age: 60 y.o
+Experience: 27 years.
+
+Course: Digital Systems - a
+Lecturer: Dr Ofir Nir.
+Age: 42 y.o
+Experience: 10 years.
+
+1 year semester B
+Course: Physics 1
+Lecturer: Dr.David Tal
+Age: 45 y.o
+Experience: 15 years.
+
+Course: Calculus 2
+Lecturer: Dr. Karina Cohen-Nisim.
+Age:53 y.o
+Experience: 21 years.
+
+Course: Introduction to micro computers
+Lecturer: Dr. Alex Jones.
+Age: 37 y.o
+Experience: 4 years.
+
+Course: Introduction to Electrical engineering
+Lecturer: Dr. Mark Levin.
+Age: 60 y.o
+Experience: 27 years.
+
+Course: Differential Equations
+Lecturer: Dr Ofir Nir.
+Age: 42 y.o
+Experience: 10 years.

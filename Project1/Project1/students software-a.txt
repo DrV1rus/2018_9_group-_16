@@ -1,0 +1,20 @@
+316317763-anna-brown-00001,00004,-none-0-18.09.95-anna@ac.hit.ac.il-avigdor 10,beer sheva-0546356867$
+316274623-dan-tal-none-none-0-14.12.92-dan@ac.hit.ac.il-tal 15,tel aviv-0543271829$
+318375824-shir-levi-none-none-0-16.03.94-shir@ac.hit.ac.il-shy 19,beer sheva-0547281925$
+328932891-dor-gol-none-none-0-17.03.95-dor@ac.hit.ac.il-yale 28,meitar-0547281928$
+381927347-lilly-erman-none-none-0-14.02.94-lilyl@ac.hit.ac.il-negev 17,rahat-0532637483$
+318292392-ben-shimon-none-none-0-12.11.93-ben@ac.hit.ac.il-bar 7,ashdod-0542819283$
+317383934-gil-david-none-none-0-01.01.95-gil@ac.hit.ac.il-bob 9,beer sheva-0543627920$
+326374836-tal-ben-none-none-0-03.08.94-tal@ac.hit.ac.il-bool 88,dimona-0546273849$
+321526218-hila-golod-none-none-0-19.05.92-hila@ac.hit.ac.il-hadid 18,ashqelon-0542718293$
+319283749-tslil-levi-none-none-0-17.03.95-tslil@ac.hit.ac.il-falol 78,rahat-0542718273$
+338292849-yana-budha-none-none-0-18.10.95-yana@ac.hit.ac.il-tilal 12,tel aviv-0547281928$
+361726376-mika-gigi-none-none-0-17.03.93-mika@ac.hit.ac.il-hagda 10,beer sheva-0546271827$
+324152614-gila-hadid-none-none-0-12.05.94-gila@ac.hit.ac.il-tal ben 18,dimona-0546273828$
+312727273-sharon-gutman-none-none-0-26.09.94-sharon@ac.hit.ac.il-lol 1,haifa-0546271829$
+364646462-pnina-dan-none-none-0-12.07.95-pnina@ac.hit.ac.il-ola 14,beer sheva-0542718273$
+315151512-jamal-bodir-none-none-0-16.02.93-jamal@ac.hit.ac.il-far 4,ofakim-0536271827$
+312121211-gigi-hadid-none-none-0-28.09.95-gigi@ac.hit.ac.il-jilla 5,rahat-0534253748$
+319393932-sara-bibi-none-none-0-17.07.95-sara@ac.hit.ac.il-halil 2,tel aviv-0542738273$
+319382933-bebe-rexa-none-none-0-24.04.94-bebe@ac.hit.ac.il-fara 29,ofakin-0543829383$
+319992934-britneyspears-spears-none-none-0-11.01.94-britney@ac.hit.ac.ilgivat 55,dimona-givat 55,dimona-0546272837$

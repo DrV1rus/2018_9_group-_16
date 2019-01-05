@@ -1,0 +1,5 @@
+01111-phisics 1 a-electrical-3.5-david tal-simon cohen-sunday, 10:00 to 13:00-sunday, 13:00 to 15:00-hedva 1 a-task1-10/6/19,10/7/19-10/5/18-20$
+01112-hedva 2 a-electrical-5-karina cohen-nisim tal-monday, 10:00 to 13:00-monday, 13:00 to 15:00-hedva 1 a-task1-11/6/19,11/7/19-11/5/18-20$
+01113-introduction to micro computers-electrical-4.5-alex jones-gilad han-tuesday, 10:00 to 13:00-tuesday, 13:00 to 15:00-digital systems a-task1-14/6/19,14/7/19-14/5/18-20$
+01114-introduction to electrical engineering-electrical-4.5-mark levin-mark knopfler-tuesday, 15:00 to 18:00-tuesday, 18:00 to 20:00-computer programming for electronics-task1-15/6/19,15/7/19-15/5/18-20$
+01115-differential equations-electrical-3.5-ofir nir-alex panovich-sunday, 15:00 to 18:00-sunday, 18:00 to 20:00-algebra-task1-16/6/19,16/7/19-16/5/18-20$
