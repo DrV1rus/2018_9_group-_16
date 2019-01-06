@@ -1,0 +1,5 @@
+312457890-david-tal-1.1.65-beer sheva-Ph.D. Software Engineering-algebra,phisics,phisics 1 a-davidtal@ac.hit.ac.il-Thursday ,10:00 to 13:00-G01$
+123675737-karina-cohen-3.9.85-beer sheva-Ph.D. Software Engineering-hedva 1,hedva 2,hedva 1 a,hedva 2 a-karinacohen@ac.hit.ac.il-Thursday ,10:00 to 13:00-G02$
+656372939-alex-jones-4.2.89-beer sheva-Ph.D. Software Engineering-architecture 1,architecture 2,electronic materials,introduction to micro computers-alexjones@ac.hit.ac.il-Thursday ,10:00 to 13:00-G03$
+787846392-mark-levin-24.6.82-beer sheva-Ph.D. Software Engineering-logic 1,logic 2,computer programming for electronics,introduction to electrical engineering-marklevin@ac.hit.ac.il-Thursday ,10:00 to 13:00-G04$
+327847843-ofir-nir-22.7.87-beer sheva-Ph.D. Software Engineering-computer science introduction,object oriented programming,digital systems a,differential equations-ofirnir@ac.hit.ac.il-Thursday ,10:00 to 13:00-G05$

@@ -1,0 +1,5 @@
+234637483-simon-cohen-13.1.80-beer sheva-M.Sc Software Engineering-algebra,phisics,phisics 1 a-simoncohen@ac.hit.ac.il-Thursday ,10:00 to 13:00-G06$
+647384374-nisim-tal-23.8.85-beer sheva-M.Sc Software Engineering-hedva 1,hedva 2,hedva 1 a,hedva 2 a-nisimtal@ac.hit.ac.il-Thursday ,10:00 to 13:00-G07$
+363734673-gilad-han-14.8.86-beer sheva-M.Sc Software Engineering-architecture 1,architecture 2,electronic materials,introduction to micro computers-giladhan@ac.hit.ac.il-Thursday ,10:00 to 13:00-G07$
+547854364-mark-knopfler-21.4.81-beer sheva-M.Sc Software Engineering-logic 1,logic 2,computer programming for electronics,introduction to electrical engineering-markknopfler@ac.hit.ac.il-Thursday ,10:00 to 13:00-G09$
+544784378-alex-panovich-1.2.84-beer sheva-M.Sc Software Engineering-computer science introduction,object oriented programming,digital systems a,differential equations-alexpanovich@ac.hit.ac.il-Thursday ,10:00 to 13:00-G10$

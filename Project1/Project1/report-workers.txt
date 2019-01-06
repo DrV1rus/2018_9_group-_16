@@ -1,0 +1,9 @@
+Course registrations manager:
+Ms. Karina Zlobin
+Age: 35
+Experience: 10 years
+
+Data manager:
+Mr. Anakin Skywalker
+Age: 30
+Experience: 6 years
