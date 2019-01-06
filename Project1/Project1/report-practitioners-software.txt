@@ -1,0 +1,51 @@
+1 year semester A
+Course: Algebra
+Practitioner: Mr. Simon Cohen.
+Age 32 y.o.
+Experience: 2 years.
+
+Course: Calculus 1
+Practitioner: Mr. Nisim Tal.
+Age: 42 y.o.
+Experience: 11 years.
+
+Course: Architecture 1
+Practitioner: Mr. Gilad Han.
+Age: 38 y.o.
+Experience 8 years.
+
+Course: Logics 1
+Practitioner: Mr. Mark Knopfler.
+Age: 45 y.o.
+Experience: 16 years
+
+Course: Introduction to Computer Science
+Practitioner: Mr. Alex Panovich.
+Age: 50 y.o.
+Experience 22 years.
+
+1 year semester B
+Course: Physics 
+Practitioner: Mr. Simon Cohen.
+Age 32 y.o.
+Experience: 2 years.
+
+Course: Calculus 2
+Practitioner: Mr. Nisim Tal.
+Age: 42 y.o.
+Experience: 11 years.
+
+Course: Architecture 2
+Practitioner: Mr. Gilad Han.
+Age: 38 y.o.
+Experience 8 years.
+
+Course: Logics 2
+Practitioner: Mr. Mark Knopfler.
+Age: 45 y.o.
+Experience: 16 years
+
+Course: Object-Oriented Programming
+Practitioner: Mr. Alex Panovich.
+Age: 50 y.o.
+Experience 22 years.

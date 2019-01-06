@@ -1,0 +1,11 @@
+Courses of the department:
+No previous courses--->algebra 1
+No previous courses--->hedva 1--->phisics, hedva 2
+No previous courses--->architecture 1--->architecture 2
+No previous courses--->logic 1--->logic 2
+No previous courses--->computer science introduction--->object oriented programming
+
+General courses:
+Semester A:theatrical experience
+Semester B:orchestra experience
+
