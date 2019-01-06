@@ -1,0 +1,44 @@
+How to use the system:$
+In the menu choose your choice:$
+1-Course registration$
+2-Schedule$
+3-Grades$
+4-Exams Schedule$
+5-Messages$
+6-Account page$
+7-Update details$
+8-Reports$
+9-Help$
+10-Exit$
+
+For choice number 1:$
+1-Register for courses-->from the list of courses for your department and semester you choose the num of course and register$
+2-Deleted registerd courses-->enter the number of courses to deleted$
+
+For choice number 2:$
+Schedule for the week with the registerd courses$
+Enter number of course to see the details about it$
+
+For choice number 3:$
+Enter the course number and see your grade and average$
+
+For choice number 4:$
+See the table of exams and works of every registerd course$
+
+For choice number 5:$
+Table of messages about updated information on the courses and more$
+
+For choice number 6:$
+Information about how much to pay for the courses$
+
+For choice number 7:$
+Enter the feilds you want to update$
+
+For choice number 8:$
+Enter your choice for viewing the reports$
+
+For choice number 9:$
+This helping guide
+
+For choice number 10:$
+Exit the system$
