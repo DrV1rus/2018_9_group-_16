@@ -10287,7 +10287,7 @@ void students_update()
 	int course_exist = 0;
 	int _index;
 	char num_places[3];
-
+	int counter = 0;
 
 	//**************************************************************
 	printf("Enter student id :");
@@ -10538,6 +10538,30 @@ void students_update()
 		printf("Enter course number (5 digits) :");
 		scanf("%s", &course_num);
 		getchar();
+		k = 0;
+		j = 0;
+		while (students[index].listed_courses[k] != '\0')
+		{
+			if (students[index].listed_courses[k] == ',')
+			{
+				k++;
+				j = 0;
+			}
+			if (students[index].listed_courses[k] == course_num[j])
+				counter++;
+			k++;
+			j++;
+			if (counter == 5)
+			{
+				printf("\nThe student is alredy registed to this course!\n");
+				exit(1);
+			}
+			if (j == 5)
+			{
+				j = 0;
+				counter = 0;
+			}
+		}
 		//**************************************************************
 		fptr2 = fopen("choice_courses.txt", "r");
 		if (fptr2 == NULL)
