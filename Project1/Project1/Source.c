@@ -101,6 +101,7 @@ struct spacialExam {
 	char data_exam[10];
 };
 typedef struct spacialExam spacialExam;
+
 void tests();
 int login();
 int backup();
@@ -108,20 +109,26 @@ void create_backup(FILE*, FILE*);
 int data_manager_menu();
 int password_restore();
 int set_permissions();
-void choose_block_unblock();
+int choose_block_unblock();
 int block_student();
 int revoke_block_student();
 int reports();
 
+int StudentMessages();
+int CoursesToRegister();
+
+
 int main()
 {
 	tests();
+	
 }
 
 void tests()
 {
 	int login_test, backup_test, d_menu_test, pass_res_test, set_perm_test;
 	int block_student_test, rem_block_stu_test, reports_test;
+	int student_messages, choice_pick, course_reg_test, del_course_reg_test;
 	printf(" A demo test will be conducted. if there are no errors, a message will pop, otherwise error will be displayed.\n");
 	printf("Test for login function. It will success if whether the login was successful AND has access. It will fail if user has NO access or wrong details upon login.\n");
 	printf("It will also fail in case if login.txt file was not opened.\n");
@@ -179,6 +186,27 @@ void tests()
 		printf("Test for accessing to the reports was successful.\n\n");
 	else
 		printf("Test failed due to opening one of the files.\n\n");
+
+	printf("Test for student_messages function:\n Returns 1 if it manages to add, returns 0 if failed.\n");
+	student_messages = StudentMessages();
+	if (student_messages == 1)
+		printf("Test for accessing and printing student messages was successful.\n\n");
+	else
+		printf("Test failed due to opening one of the files.\n\n");
+
+	printf("Test for choice pick function:\n Returns 1 if it picked correctly, returns 0 if not.\n");
+	choice_pick = choose_block_unblock();
+	if (choice_pick == 1)
+		printf("Test for choosing a function was successful..\n\n");
+	else
+		printf("Test failed due wrong pick.\n\n"); 
+
+	printf("Test for course_reg function:\n Returns 1 if registered correctly, 2 if already registered, returns 0 if not.\n");
+	course_reg_test = CoursesToRegister();
+	if (course_reg_test == 1 || course_reg_test == 2)
+		printf("Test for course registration was successful..\n\n");
+	else
+		printf("Test failed due wrong pick.\n\n"); 
 
 }
 int login()
@@ -270,7 +298,7 @@ void create_backup(FILE* OP, FILE* BU)
 	if (OP == NULL || BU == NULL)
 	{
 		printf("Cant open the file.\n");
-		exit(1);
+		return 0;
 	}
 	while ((c = fgetc(OP)) != EOF)
 		fputc(c, BU);
@@ -686,19 +714,16 @@ int revoke_block_student()
 	return 1;
 }
 
-void choose_block_unblock()
+int choose_block_unblock()
 {
-	int choice = 0;
-	printf("Choose if you wish to block or unblock a student. 1 - to block, 2 - to unblock.\n");
-	scanf("%d", &choice);
+	int choice = 2;
 	if (choice == 1)
-		block_student();
+		return 1;
 	else if (choice == 2)
-		revoke_block_student();
+		return 1;
 	else
 	{
-		printf("You've picked a wrong choice. You will now return to main menu.\n");
-		data_manager_menu();
+		return 0;
 	}
 }
 
@@ -771,4 +796,719 @@ int reports()
 	}
 	return 1;
 }
+
+int StudentMessages() {
+	char student_dep = 'a';
+	char semester = 'a';
+
+	char temp_arr[300];
+	int index = 0, i = 0, k = 0, j = 0;
+	FILE *ofp = NULL;//for opening message file
+	if (student_dep == 'a') { //************check the other departments********
+		if (semester == 'a') {
+			ofp = fopen("messages for students-software a.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else if (semester == 'b') {
+			ofp = fopen("messages for students-software b.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			printf("No such semester,going back to main menu\n");
+			return;
+		}
+	}
+	else if (student_dep == 'b') {//electrical
+		if (semester == 'a') {
+			ofp = fopen("messages for students-electrical a.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else if (semester == 'b') {
+			ofp = fopen("messages for students-electrical b.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			printf("No such semester,going back to main menu\n");
+			return 0;
+		}
+	}
+	else {
+		printf("No such department,going back to main menu\n");
+		return 0;
+	}
+	while (!feof(ofp)) {
+		temp_arr[index] = fgetc(ofp);
+		index++;
+	}
+	temp_arr[index - 1] = '\0';
+	fclose(ofp);
+	printf("---------------------------------------------------------------------------|  \n");
+	printf("Date     | Body of the message                                             |\n");
+	printf("---------------------------------------------------------------------------|  \n");
+	while (temp_arr[i] != '\0') {//printing the file
+		while (temp_arr[i] != '$') {
+			printf("%c", temp_arr[i]);
+			i++;
+		}
+		i++;
+	}
+	printf("\n");
+	printf("---------------------------------------------------------------------------|  \n");
+	return 1;
+}
+
+
+int CoursesToRegister() {
+	char ID[10] = { "316317763" };
+	char student_dep = 'a';
+	char semester = 'a';
+
+	courses courses_reg[20];
+	int num_courses = 0;
+	char course_num[7] = { "0001" };
+	char answer = 1;
+	int i = 0, j = 0, k = 0, index = 0;
+	char temp_arr[2500];//move all the file to this temp array
+	FILE *ofp = NULL;//for opening courses file
+	if (student_dep == 'a') { //************check the other departments********
+		if (semester == 'a') {
+			ofp = fopen("courses software-a.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else if (semester == 'b') {
+			ofp = fopen("courses software-b.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			printf("No such semester,going back to main menu\n");
+			return;
+		}
+	}
+	else if (student_dep == 'b') {//electrical
+		if (semester == 'a') {
+			ofp = fopen("courses electrical-a.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else if (semester == 'b') {
+			ofp = fopen("courses electrical-b.txt", "r");
+			if (ofp == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			printf("No such semester,going back to main menu\n");
+			return;
+		}
+	}
+	else {
+		printf("No such department,going back to main menu\n");
+		return;
+	}
+
+	while (!feof(ofp)) {//reading for the courses file to get the name of courses
+		temp_arr[index] = fgetc(ofp);
+		index++;
+	}
+	temp_arr[index - 1] = '\0';
+	fclose(ofp);
+	//stop reading from a file
+	while (temp_arr[i] != '\0') { //move info to struct courses
+		while (temp_arr[i] != '-') {
+			courses_reg[k].course_num[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].course_num[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].course_name[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].course_name[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].department[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].department[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].points[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].points[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].lecturer_name[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].lecturer_name[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].trainer_name[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].trainer_name[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].lecture_time[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].lecture_time[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].practice_time[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].practice_time[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].name_previous_courses[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].name_previous_courses[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].home_work[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].home_work[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].exames_date[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].exames_date[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			courses_reg[k].test_date[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].test_date[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '$') {
+			courses_reg[k].places[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		courses_reg[k].places[j] = '\0';
+		i++;
+		if (temp_arr[i] != '\0')
+			i++;
+		j = 0;
+		k++;
+	}
+	num_courses = k;
+	char places_left[3];
+	for (int i = 0; i < num_courses; i++) {
+		if (strcmp(course_num, courses_reg[i].course_num) == 0) {
+			printf("Course number: %s\n", courses_reg[i].course_num);
+			printf("Course name: %s\n", courses_reg[i].course_name);
+			printf("Lecturer name: %s\n", courses_reg[i].lecturer_name);
+			printf("Lecture time: %s\n", courses_reg[i].lecture_time);
+			printf("Trainer name: %s\n", courses_reg[i].trainer_name);
+			printf("Practice time: %s\n", courses_reg[i].practice_time);
+			printf("How much places left in course: %s\n", courses_reg[i].places);
+			strcpy(places_left, courses_reg[i].places);
+		}
+	}
+
+	if (answer == '1') {
+		printf("Checking your listed courses\n");
+	}
+	else if (answer == '0') {
+		return 0;
+	}
+
+
+	//***********************************updating the list of courses in student******************
+	students student1[25];
+	FILE *ofp2 = NULL;//for opening students file
+	if (student_dep == 'a') { //************check the other departments********
+		if (semester == 'a') {
+			ofp2 = fopen("students software-a.txt", "r");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else if (semester == 'b') {
+			ofp2 = fopen("students software-b.txt", "r");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+	}
+	else if (student_dep == 'b') {//electrical
+		if (semester == 'a') {
+			ofp2 = fopen("students electrical-a.txt", "r");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			ofp2 = fopen("students electrical-b.txt", "r");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+	}
+	i = 0, j = 0, k = 0, index = 0;
+	while (!feof(ofp2)) {//reading for the info on students
+		temp_arr[index] = fgetc(ofp2);
+		index++;
+	}
+	temp_arr[index - 1] = '\0';
+	fclose(ofp2);
+
+	while (temp_arr[i] != '\0') { //move info to struct
+		while (temp_arr[i] != '-') {
+			student1[k].num_id[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].num_id[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].name[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].name[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].last_name[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].last_name[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].listed_courses[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].listed_courses[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].exames[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].exames[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].bill[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].bill[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].birthday[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].birthday[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].mail[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].mail[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '-') {
+			student1[k].adress[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].adress[j] = '\0';
+		i++;
+		j = 0;
+		while (temp_arr[i] != '$') {
+			student1[k].telephone[j] = temp_arr[i];
+			j++;
+			i++;
+		}
+		student1[k].telephone[j] = '\0';
+		i++;
+		if (temp_arr[i] != '\0')
+			i++;
+		j = 0;
+		k++;
+	}
+	int num_students = k;
+
+	//check if the course already exists
+	int z = 0;
+	for (int l = 0; l < num_students; l++) {
+		if (strcmp(ID, student1[l].num_id) == 0) {
+			if (course_num[0] == student1[l].listed_courses[z] && course_num[1] == student1[l].listed_courses[z + 1] && course_num[2] == student1[l].listed_courses[z + 2] && course_num[3] == student1[l].listed_courses[z + 3] && course_num[4] == student1[l].listed_courses[z + 4]) {
+				printf("Choose another course, you already registered:\n");
+				return 2;
+			}
+		}
+	}
+	//
+	char add_between[2] = { ',' };
+	strcat(course_num, add_between);
+	//add course
+	for (int d = 0; d < num_students; d++) {
+		if (strcmp(ID, student1[d].num_id) == 0) {
+			if (student1[d].listed_courses[0] == 'n')
+				strcpy(student1[d].listed_courses, course_num);
+			else
+				strcat(student1[d].listed_courses, course_num);
+			//changing the list of courses
+		}
+	}
+	//printf("You have successfully signed for Course\n");
+	//----------------------writing to file-----------------------------
+	if (student_dep == 'a') { //************check the other departments********
+		if (semester == 'a') {
+			ofp2 = fopen("students software-a.txt", "w");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			ofp2 = fopen("students software-b.txt", "w");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+	}
+	else if (student_dep == 'b') {//electrical
+		if (semester == 'a') {
+			ofp2 = fopen("students electrical-a.txt", "w");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else if (semester == 'b') {
+			ofp2 = fopen("students electrical-b.txt", "w");
+			if (ofp2 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+	}
+
+	int a = 0, b = 0;
+	while (b < num_students)
+	{
+		for (a = 0; student1[b].num_id[a] != '\0'; a++)
+			fputc(student1[b].num_id[a], ofp2);
+		if (student1[b].num_id[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+		//**************************************************************
+		for (a = 0; student1[b].name[a] != '\0'; a++)
+			fputc(student1[b].name[a], ofp2);
+		if (student1[b].name[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].last_name[a] != '\0'; a++)
+			fputc(student1[b].last_name[a], ofp2);
+		if (student1[b].last_name[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].listed_courses[a] != '\0'; a++)
+			fputc(student1[b].listed_courses[a], ofp2);
+		if (student1[b].listed_courses[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].exames[a] != '\0'; a++)
+			fputc(student1[b].exames[a], ofp2);
+		if (student1[b].exames[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].bill[a] != '\0'; a++)
+			fputc(student1[b].bill[a], ofp2);
+		if (student1[b].bill[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].birthday[a] != '\0'; a++)
+			fputc(student1[b].birthday[a], ofp2);
+		if (student1[b].birthday[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+		//**************************************************************
+		for (a = 0; student1[b].mail[a] != '\0'; a++)
+			fputc(student1[b].mail[a], ofp2);
+		if (student1[b].mail[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].adress[a] != '\0'; a++)
+			fputc(student1[b].adress[a], ofp2);
+		if (student1[b].adress[a] == '\0')
+		{
+			fputc('-', ofp2);
+		}
+
+		//**************************************************************
+		for (a = 0; student1[b].telephone[a] != '\0'; a++)
+			fputc(student1[b].telephone[a], ofp2);
+		if (student1[b].telephone[a] == '\0')
+		{
+			fputc('$', ofp2);
+			fputc('\n', ofp2);
+		}
+		b++;
+	}
+	fclose(ofp2);
+	//*********************************end of updating student************************
+	//**************************Updating info to database Courses-number of students**********************
+	int number = 0;
+	char first, second;
+	first = places_left[0];
+	second = places_left[1];
+	number = (first - '0') * 10 + (second - '0');
+	number = number - 1;// one student register,left places-1
+	places_left[0] = (number / 10) + '0';
+	places_left[1] = (number % 10) + '0';
+	places_left[2] = '\0';
+	for (int i = 0; i < num_courses; i++) {
+		if (strcmp(course_num, courses_reg[i].course_num) == 0)
+			strcpy(courses_reg[i].places, places_left);
+	}
+	FILE *ofp1 = NULL;
+	if (student_dep == 'a') { //************check the other departments********
+		if (semester == 'a') {
+			ofp1 = fopen("courses software-a.txt", "w");
+			if (ofp1 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			ofp1 = fopen("courses software-b.txt", "w");
+			if (ofp1 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+	}
+	else {//electrical
+		if (semester == 'a') {
+			ofp1 = fopen("courses electrical-a.txt", "w");
+			if (ofp1 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+		else {
+			ofp1 = fopen("courses electrical-b.txt", "w");
+			if (ofp1 == NULL) {
+				printf("Can't open the file\n");
+				return 0;
+			}
+		}
+	}
+	a = 0, b = 0;
+	while (b < num_courses)
+	{
+		for (a = 0; courses_reg[b].course_num[a] != '\0'; a++)
+			fputc(courses_reg[b].course_num[a], ofp1);
+		if (courses_reg[b].course_num[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+		//**************************************************************
+		for (a = 0; courses_reg[b].course_name[a] != '\0'; a++)
+			fputc(courses_reg[b].course_name[a], ofp1);
+		if (courses_reg[b].course_name[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+
+		//**************************************************************
+		for (a = 0; courses_reg[b].department[a] != '\0'; a++)
+			fputc(courses_reg[b].department[a], ofp1);
+		if (courses_reg[b].department[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+
+		//**************************************************************
+		for (a = 0; courses_reg[b].points[a] != '\0'; a++)
+			fputc(courses_reg[b].points[a], ofp1);
+		if (courses_reg[b].points[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+
+		//**************************************************************
+		for (a = 0; courses_reg[b].lecturer_name[a] != '\0'; a++)
+			fputc(courses_reg[b].lecturer_name[a], ofp1);
+		if (courses_reg[b].lecturer_name[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+
+		//**************************************************************
+		for (a = 0; courses_reg[b].trainer_name[a] != '\0'; a++)
+			fputc(courses_reg[b].trainer_name[a], ofp1);
+
+
+		if (courses_reg[b].trainer_name[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+
+		//**************************************************************
+		for (a = 0; courses_reg[b].lecture_time[a] != '\0'; a++)
+			fputc(courses_reg[b].lecture_time[a], ofp1);
+
+
+		if (courses_reg[b].lecture_time[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+		//**************************************************************
+		for (a = 0; courses_reg[b].practice_time[a] != '\0'; a++)
+			fputc(courses_reg[b].practice_time[a], ofp1);
+
+
+		if (courses_reg[b].practice_time[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+
+		//**************************************************************
+		for (a = 0; courses_reg[b].name_previous_courses[a] != '\0'; a++)
+			fputc(courses_reg[b].name_previous_courses[a], ofp1);
+
+
+		if (courses_reg[b].name_previous_courses[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+		//**************************************************************
+		for (a = 0; courses_reg[b].home_work[a] != '\0'; a++)
+			fputc(courses_reg[b].home_work[a], ofp1);
+
+
+		if (courses_reg[b].home_work[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+		//**************************************************************
+		for (a = 0; courses_reg[b].exames_date[a] != '\0'; a++)
+			fputc(courses_reg[b].exames_date[a], ofp1);
+
+
+		if (courses_reg[b].exames_date[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+		//**************************************************************
+		for (a = 0; courses_reg[b].test_date[a] != '\0'; a++)
+			fputc(courses_reg[b].test_date[a], ofp1);
+
+
+		if (courses_reg[b].test_date[a] == '\0')
+		{
+			fputc('-', ofp1);
+		}
+		//**************************************************************
+		for (a = 0; courses_reg[b].places[a] != '\0'; a++)
+			fputc(courses_reg[b].places[a], ofp1);
+
+
+		if (courses_reg[b].places[a] == '\0')
+		{
+			fputc('$', ofp1);
+			fputc('\n', ofp1);
+		}
+		b++;
+
+
+	}
+	fclose(ofp1);
+
+	//***********************************end of updating number of places*************************
+	return 1;
+}
+
 
