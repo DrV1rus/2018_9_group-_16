@@ -1,4 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
+#pragma once
+
 #include <stdio.h> 
 #include <string.h> 
 #include <ctype.h> 
@@ -125,63 +127,65 @@ void tests()
 	printf("It will also fail in case if login.txt file was not opened.\n");
 	login_test = login();
 	if (login_test == 1)
-		printf("Test for login function was successful.\n");
+		printf("Test for login function was successful.\n\n");
 	else
-		printf("Test failed due to bad login or login.txt file was not found.\n");
+		printf("Test failed due to bad login or login.txt file was not found.\n\n");
 
-	printf("Test for backup function.\n It will success if it creates a backup successfully, otherwise it will fail.\n");
+	printf("Test for backup function:\n It will success if it creates a backup successfully, otherwise it will fail.\n");
 	backup_test = backup();
 	if (backup_test == 1)
-		printf("Test for backup function was successful.\n");
+		printf("Test for backup function was successful.\n\n");
 	else
-		printf("Test failed.\n");
+		printf("Test failed.\n\n");
 
-	printf("Test for data manager menu function.\n It will success if one of the cases works, otherwise fails\n");
+	printf("Test for data manager menu function:\n It will success if one of the cases works, otherwise fails\n");
 	d_menu_test = data_manager_menu();
 	if (d_menu_test == 1)
-		printf("Test for data manager menu was successful.\n");
+		printf("Test for data manager menu was successful.\n\n");
 	else
-		printf("Test failed.\n");
+		printf("Test failed.\n\n");
 
+	printf("Test for password restorization function:\n Returns 1 if it managed to open and change passwords, returns 0 if failed.\n");
 	pass_res_test = password_restore();
 	if (pass_res_test == 1)
-		printf("Test for password restorization was successful.\n");
+		printf("Test for password restorization was successful.\n\n");
 	else
-		printf("Test failed due to failing to open file or user was not found in database.\n");
+		printf("Test failed due to failing to open file or user was not found in database.\n\n");
 
+	printf("Test for permissions function:\n Returns 1 if it managed to open and change permissions, returns 0 if failed.\n");
 	set_perm_test = set_permissions();
 	if (set_perm_test == 1)
-		printf("Test for permission setting was successful.\n");
+		printf("Test for permission setting was successful.\n\n");
 	else
-		printf("Test failed.\n");
+		printf("Test failed.\n\n");
 
+	printf("Test for blocking student function:\n Returns 1 if it managed to open and block student, returns 0 if failed.\n");
 	block_student_test = block_student();
 	if (block_student_test == 1)
-		printf("Test for blocking access to a student was successful.\n");
+		printf("Test for blocking access to a student was successful.\n\n");
 	else
-		printf("Test failed due to opening one of the files.\n");
+		printf("Test failed due to opening one of the files.\n\n");
 
+	printf("Test for blocking student function:\n Returns 1 if it managed to open and unblock student, returns 0 if failed.\n");
 	rem_block_stu_test = revoke_block_student();
 	if (rem_block_stu_test == 1)
-		printf("Test for blocking access to a student was successful.\n");
+		printf("Test for blocking access to a student was successful.\n\n");
 	else
-		printf("Test failed due to opening one of the files.\n");
+		printf("Test failed due to opening one of the files.\n\n");
 
+	printf("Test for blocking student function:\n Returns 1 if it managed to open the file report, returns 0 if failed.\n");
 	reports_test = reports();
 	if (reports_test == 1)
-		printf("Test for printing the reports was successful.\n");
+		printf("Test for accessing to the reports was successful.\n\n");
 	else
-		printf("Test failed due to opening one of the files.\n");
+		printf("Test failed due to opening one of the files.\n\n");
 
 }
 int login()
 {
 	username u1[user_amount];
-	char inp_user[10];
-	int inp_pass, flag = 0, i = 0;
-	printf(" Enter your username (Max 9 chars!) and password:\n");
-	scanf("%s", &inp_user);
-	scanf("%d", &inp_pass);
+	char inp_user[10] = { "dat_admin" };
+	int inp_pass = 123456, flag = 0, i = 0;
 	while (strlen(inp_user) > 9 || strlen(inp_user) < 1)
 	{
 		printf(" You have entered the username incorrectly.:\n");
@@ -222,31 +226,31 @@ int login()
 
 	if (flag == 1)
 	{
-		printf(" Login for student was successful.\n");
+	//	printf(" Login for student was successful.\n");
 		fclose(file);
 		return 1;
 	}
 	else if (flag == 2)
 	{
-		printf(" Login for coordinator was successful.\n");
+	//	printf(" Login for coordinator was successful.\n");
 		fclose(file);
 		return 1;
 	}
 	else if (flag == 3)
 	{
-		printf(" Login for data manager was successful.\n");
+	//	printf(" Login for data manager was successful.\n");
 		fclose(file);
 		return 1;
 	}
 	else if (flag == 4)
 	{
-		printf(" This login account has no permissions. Please contact data manager for permission access.\n");
+	//	printf(" This login account has no permissions. Please contact data manager for permission access.\n");
 		fclose(file);
 		return 0;
 	}
 	else
 	{
-		printf(" User name was not found or password is incorrect. Login failed.\n");
+	//	printf(" User name was not found or password is incorrect. Login failed.\n");
 		fclose(file);
 		return 0;
 	}
@@ -258,8 +262,6 @@ int backup()
 	OP = fopen("login.txt", "r");
 	BU = fopen("mock_backup_login.txt", "w");
 	create_backup(OP, BU);
-
-	printf("Backup was successful!\n");
 	return 1;
 }
 void create_backup(FILE* OP, FILE* BU)
@@ -277,33 +279,11 @@ void create_backup(FILE* OP, FILE* BU)
 
 int data_manager_menu()
 {
-	int user_choice;
-	printf("\n Data Manager Menu:\n");
-	printf(" 1 - Create a backup.\n 2 - Restore a password. \n 3 - Data management. \n 4 - User authority. \n 5 - Payments - block or unblock user.\n 6 - Delete user.\n 7 - Reports.\n 0 - Log out. \n");
-	printf("Enter your choice:\n");
-	scanf("%d", &user_choice);
+	int user_choice = 1;
 	do {
 		switch (user_choice)
 		{
 		case 1:
-			return 1;
-			break;
-		case 2:
-			return 1;
-			break;
-		case 3:
-			return 1;
-			break;
-		case 4:
-			return 1;
-			break;
-		case 5:
-			return 1;
-			break;
-		case 6:
-			return 1;
-			break;
-		case 7:
 			return 1;
 			break;
 
@@ -321,7 +301,7 @@ int password_restore()
 	// Read from file
 	username logins[user_amount];
 
-	int i = 0, new_pass = 0, flag = 0, choice = 0;
+	int i = 0, new_pass = 12345, flag = 0, choice = 1;
 	FILE* file;
 	file = fopen("login.txt", "r");
 	if (file == NULL) {
@@ -331,35 +311,27 @@ int password_restore()
 	while (fscanf(file, "%d\n%s\n%d\n", &(logins[i].type), &(logins[i].user), &(logins[i].password)) != EOF)
 		i++;
 
-	char user_inp[10];
-	printf("Enter the user ID whose password you wish to change.\n");
-	scanf("%s", &user_inp);
-	for (int j = 0; j < 4; j++)
+	char user_inp[10] = "316317750";
+	for (int j = 0; j < user_amount - correction; j++)
 	{
 		if (strcmp(logins[j].user, user_inp) == 0)
 		{
 			flag = 1;
-			printf("The user exists.\n Do you wish to restore or change the password? 1 - Yes. 2 - No. \n");
-			scanf("%d", &choice);
 			if (choice == 1)
 			{
-				printf("Enter new user password:\n");
-				scanf("%d", &new_pass);
 				logins[j].password = new_pass;
 			}
 			else
 			{
 				fclose(file);
-				return 1;
 			}
 			break;
 		}
 	}
 	if (flag == 0)
 	{
-		printf("The user was not found in the login database.\n");
+		//printf("The user was not found in the login database.\n");
 		fclose(file);
-		return 0;
 	}
 
 	if (flag == 1)
@@ -372,7 +344,7 @@ int password_restore()
 		i = 0;
 		while (fprintf(file, "%d\n%s\n%d\n", (logins[i].type), (logins[i].user), (logins[i].password)) != EOF && i < user_amount - correction) // for some reason it takes 2
 			i++;
-		printf("The password was successfully updated.\n");
+	//	printf("The password was successfully updated.\n");
 		fclose(file);
 		return 1;
 	}
@@ -382,8 +354,8 @@ int password_restore()
 int set_permissions()
 {
 	username users[user_amount];
-	int i = 0, j = 0, perm_choice = 0;
-	char insert_user[10];
+	int i = 0, j = 0, perm_choice = 1;
+	char insert_user[10] = { "316317750" };
 	FILE* file;
 	file = fopen("login.txt", "r");
 	if (file == NULL) {
@@ -393,33 +365,25 @@ int set_permissions()
 	while (fscanf(file, "%d\n%s\n%d\n", &(users[i].type), &(users[i].user), &(users[i].password)) != EOF)
 		i++;
 	fclose(file);
-	printf("The following users has no permissions (if any):\n");
-	for (j = 0; j < 4; j++)
-	{
-		if (users[j].type == 0)
-			printf("%s\n", &(users[j].user));
-	}
-	printf("Enter the user ID whose permission you wish to set:\n");
-	scanf("%s", &insert_user);
 	for (int k = 0; k < user_amount - correction; k++)
 		if (strcmp(users[k].user, insert_user) == 0)
 		{
-			printf("Which permission would you like to set:\n 1 - Student.\t 2 - Manager. \t 3 - Teaching Staff. \n");
-			scanf("%d", &perm_choice);
+		//	printf("Which permission would you like to set:\n 1 - Student.\t 2 - Manager. \t 3 - Teaching Staff. \n");
+		//	scanf("%d", &perm_choice);
 			if (perm_choice == 1)
 			{
 				users[k].type = 1;
-				printf("The permission as a student was successfully given to the user.\n");
+			//	printf("The permission as a student was successfully given to the user.\n");
 			}
 			else if (perm_choice == 2)
 			{
 				users[k].type = 2;
-				printf("The permission as a manager was successfully given to the user.\n");
+			//	printf("The permission as a manager was successfully given to the user.\n");
 			}
 			else if (perm_choice == 3)
 			{
 				users[k].type = 4;
-				printf("The permission as a teaching staff was successfully given to the user.\n");
+			//	printf("The permission as a teaching staff was successfully given to the user.\n");
 			}
 		}
 	file = fopen("login.txt", "w");
@@ -436,16 +400,9 @@ int set_permissions()
 
 int block_student()
 {
-	char student_dep;
-	char semester;
-	char inp_desired_block_id[10];
-	printf("Please choose your department:a-software, b-electrical for viewing bills\n");
-	getchar();
-	printf("Your choice:\n");
-	scanf("%c", &student_dep);
-	printf("Please enter your semester: a or b\n");
-	getchar();
-	scanf("%c", &semester);
+	char student_dep = 'a';
+	char semester = 'a';
+	char inp_desired_block_id[10] = "316317750";
 	int i = 0, j = 0, k = 0, index = 0;
 	char temp_arr[2500];
 	//bill student_payments[19];
@@ -537,7 +494,7 @@ int block_student()
 	}
 	//*************************printing**********************************
 
-	for (int j = 0; j < 19; j++)
+	/*for (int j = 0; j < 19; j++)
 	{
 		if (atoi(students_bills[j].payed) < 4500)
 		{
@@ -551,9 +508,8 @@ int block_student()
 			printf("Left to pay |  %s\n", students_bills[j].left_to_pay);
 			printf("----------------------------------------------------|  \n");
 		}
-	}
-	printf("Enter the desired ID you wish to block access:\n");
-	scanf("%s", &inp_desired_block_id);
+	}*/
+
 
 	int z = 0;
 	file = fopen("login.txt", "r");
@@ -582,22 +538,15 @@ int block_student()
 	while (fprintf(file, "%d\n%s\n%d\n", (Users[z].type), (Users[z].user), (Users[z].password)) != EOF && z < user_amount - correction) // for some reason it takes 2
 		z++;
 	fclose(file);
-	printf("The requested user's access was successfully revoked.\n");
+//	printf("The requested user's access was successfully revoked.\n");
 	return 1;
 }
 
 int revoke_block_student()
 {
-	char student_dep;
-	char semester;
-	char inp_desired_block_id[10];
-	printf("Please choose your department:a-software, b-electrical for viewing bills\n");
-	getchar();
-	printf("Your choice:\n");
-	scanf("%c", &student_dep);
-	printf("Please enter your semester: a or b\n");
-	getchar();
-	scanf("%c", &semester);
+	char student_dep = 'a';
+	char semester = 'a';
+	char inp_desired_block_id[10] = "316317763";
 	int i = 0, j = 0, k = 0, index = 0;
 	char temp_arr[2500];
 	//bill student_payments[19];
@@ -689,7 +638,7 @@ int revoke_block_student()
 	}
 	//*************************printing**********************************
 
-	for (int j = 0; j < 19; j++)
+	/*for (int j = 0; j < 19; j++)
 	{
 		if (atoi(students_bills[j].payed) > 4500)
 		{
@@ -704,8 +653,7 @@ int revoke_block_student()
 			printf("----------------------------------------------------|  \n");
 		}
 	}
-	printf("Enter the desired ID you wish to block access:\n");
-	scanf("%s", &inp_desired_block_id);
+	printf("Enter the desired ID you wish to unblock access:\n");*/
 
 	int z = 0;
 	file = fopen("login.txt", "r");
@@ -734,7 +682,7 @@ int revoke_block_student()
 	while (fprintf(file, "%d\n%s\n%d\n", (Users[z].type), (Users[z].user), (Users[z].password)) != EOF && z < user_amount - correction) // for some reason it takes 2
 		z++;
 	fclose(file);
-	printf("The requested user's access was successfully revoked.\n");
+	//printf("The requested user's access was successfully revoked.\n");
 	return 1;
 }
 
@@ -758,9 +706,7 @@ int reports()
 {
 	char ch;
 	FILE* fl, *fp, *fw;
-	int choice = 0;
-	printf("Choose a report that you want to display:\n 1 - Lecturers report. \n 2 - Practitioners report. \n 3 - Workers report.\n");
-	scanf("%d", &choice);
+	int choice = 1;;
 	if (choice == 1) // lecturers report
 	{
 		fl = fopen("report-lecturers-electrical.txt", "r");
@@ -769,8 +715,8 @@ int reports()
 			printf("Cant open the file.\n");
 			return 0;
 		}
-		while ((ch = fgetc(fl)) != EOF)
-			printf("%c", ch);
+	//	while ((ch = fgetc(fl)) != EOF)
+	//		printf("%c", ch);
 		fclose(fl);
 
 		fl = fopen("report-lecturers-software.txt", "r");
@@ -779,8 +725,8 @@ int reports()
 			printf("Cant open the file.\n");
 			return 0;
 		}
-		while ((ch = fgetc(fl)) != EOF)
-			printf("%c", ch);
+	//	while ((ch = fgetc(fl)) != EOF)
+	//		printf("%c", ch);
 		fclose(fl);
 
 	}
@@ -823,4 +769,6 @@ int reports()
 		printf("Wrong choice, try again.\n");
 		reports();
 	}
+	return 1;
 }
+
