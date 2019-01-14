@@ -515,7 +515,7 @@ void set_permissions()
 		i++;
 	fclose(file);
 	printf("The following users has no permissions (if any):\n");
-	for (j = 0; j < 4; j++)
+	for (j = 0; j < user_amount - correction; j++)
 	{
 		if (users[j].type == 0)
 			printf("%s\n", &(users[j].user));
