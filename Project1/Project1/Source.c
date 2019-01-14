@@ -2075,7 +2075,7 @@ void CoursesToRegister(char* id) {
 	}
 	if (flag == 0)
 	{
-		print("You are not in this semester por department, please check again.\n");
+		printf("You are not in this semester por department, please check again.\n");
 		return;
 	}
 	else
@@ -2093,7 +2093,7 @@ void CoursesToRegister(char* id) {
 			//changing the list of courses
 		}
 	}
-	printf("You have successfully signed for Course\n");
+	
 	//----------------------writing to file-----------------------------
 	if (student_dep == 'a') { //************check the other departments********
 		if (semester == 'a') {
