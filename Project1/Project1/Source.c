@@ -825,7 +825,7 @@ void revoke_block_student()
 			printf("----------------------------------------------------|  \n");
 		}
 	}
-	printf("Enter the desired ID you wish to block access:\n");
+	printf("Enter the desired ID you wish to unblock access:\n");
 	scanf("%s", &inp_desired_block_id);
 
 	int z = 0;
@@ -855,7 +855,7 @@ void revoke_block_student()
 	while (fprintf(file, "%d\n%s\n%d\n", (Users[z].type), (Users[z].user), (Users[z].password)) != EOF && z < user_amount - correction) // for some reason it takes 2
 		z++;
 	fclose(file);
-	printf("The requested user's access was successfully revoked.\n");
+	printf("The requested user's access was successfully restored.\n");
 	data_manager_menu();
 }
 
@@ -2063,15 +2063,23 @@ void CoursesToRegister(char* id) {
 	int num_students = k;
 
 	//check if the course already exists
-	int z = 0;
+	int z = 0, flag=0;
 	for (int l = 0; l < num_students; l++) {
 		if (strcmp(id, student1[l].num_id) == 0) {
+			flag = 1;
 			if (course_num[0] == student1[l].listed_courses[z] && course_num[1] == student1[l].listed_courses[z + 1] && course_num[2] == student1[l].listed_courses[z + 2] && course_num[3] == student1[l].listed_courses[z + 3] && course_num[4] == student1[l].listed_courses[z + 4]) {
 				printf("Choose another course, you already registered:\n");
 				scanf("%s", &course_num);
 			}
 		}
 	}
+	if (flag == 0)
+	{
+		print("You are not in this semester por department, please check again.\n");
+		return;
+	}
+	else
+		printf("You have successfully signed for Course.\n");
 	//
 	char add_between[2] = { ',' };
 	strcat(course_num, add_between);
