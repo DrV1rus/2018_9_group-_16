@@ -2755,8 +2755,23 @@ void DeleteCourses(char* id) {
 			strcpy(places_left, courses_reg[i].places);
 		}
 	}
-	printf("\n");
-	printf("You successfully deleted the course\n");
+	int flag1 = 0, e = 0;
+	for (e = 0; e < SIZE; e++) 
+	{
+		if (array_index[e] != -1)
+		{
+			if (strcmp(course_num, courses_reg[array_index[d]].course_num) == 0)
+				flag1 = 1;
+		}
+	}
+	if (flag1 == 0)
+	{
+		printf("You don't have such registered couse. Try again.\n");
+		return;
+	}
+	else
+		printf("You successfully deleted the course.\n");
+
 	//***********************************************************************************
 	//****************************Deleting from student**********************************
 	a = 0, f = 0, j = 0;
